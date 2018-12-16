@@ -23,4 +23,34 @@ International Conference on Information and Communication Technologies and Devel
 - Modify [screens.yml file in this repo](https://github.com/fnokeke/BFS/blob/master/UssdApp/static/screens.yml)
 - [Check here](https://django-ussd-airflow.readthedocs.io/en/latest/tutorial.html) for more information on creating ussd screens
 
-
+# Database
+- Install Postgres on your machine, login and create a database for your project:
+    - Installation: (mac: `brew install postgres`; Ubuntu: `sudo apt-get install postgresql postgresql-contrib`)
+    - Login into shell using postgres admin user (mac: `psql -U postgres`; Ubuntu: `sudo su - postgres`)
+    - Create your database (`CREATE DATABASE your_db_name;`) *NB: semi-colon is required.*
+    - Create user and strong password (`CREATE USER your_user WITH PASSWORD 'your_password';)
+    - Update settings of user role:
+        ```
+        ALTER ROLE your_user SET client_encoding TO 'utf8';
+        ALTER ROLE your_user SET default_transaction_isolation TO 'read committed';
+        ALTER ROLE your_user SET timezone TO 'UTC';
+        ```
+    - Grant user rights: `GRANT ALL PRIVILEGES ON DATABASE your_db_name TO your_user;`
+- Install psycopg2 in your [virtualenv](https://virtualenv.pypa.io/en/latest/) using `pip install django psycopg2`
+- Update `DATABASES` variable in your Django project `settings.py`:
+    ```
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': secret.DB_NAME,         # your_db_name (kept ours in a separate file not in this repo)
+    'USER': secret.DB_USER,         # your_user
+    'PASSWORD': secret.DB_PASSWORD, # your_password
+    'HOST': 'localhost',            # your_host
+    'PORT': ''                      # '' means default port
+    ```
+- Make migrations:
+    ```
+    python manage.py makemigrations
+    python manage.py migrate
+    ```
+- Create Django admin account: `python manage.py createsuperuser` (enter username, email, password)
+- Visit [http://localhost:8000/admin] to login into admin mode
+- You can add models (tables) to `models.py` and then run migration command above to create them in your DB

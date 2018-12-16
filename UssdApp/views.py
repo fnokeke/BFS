@@ -4,12 +4,14 @@ from __future__ import unicode_literals
 # from django.shortcuts import render
 from django.http import HttpResponse
 from ussd.core import UssdView, UssdRequest
+from UssdApp.models import UssdUser
 
 
 class CustomUssdView(UssdView):
 
     @staticmethod
     def post(req):
+        print('req.data = ', req.data)
         list_of_inputs = req.data['text'].split("*")
         text = "*" if len(list_of_inputs) >= 2 and list_of_inputs[-1] == "" and list_of_inputs[-2] == "" else \
             list_of_inputs[-1]
@@ -26,6 +28,13 @@ class CustomUssdView(UssdView):
             use_built_in_session_management=req.data.get(
                 'use_built_in_session_management', False)
         )
+        UssdUser.add({
+            'phone_number': req.data['phoneNumber'].strip('+'),
+            'session_id': session_id,
+            'ussd_input': req.data['text'],
+            'service_code': req.data['serviceCode'],
+            'language': req.data.get('language', 'en')
+        })
 
         return ussd_request
 
