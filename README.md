@@ -19,9 +19,43 @@ International Conference on Information and Communication Technologies and Devel
 - USSD screen sessions will appear
 - Congrats!
 
-# Change Screen Content
+# Active USSD Codes
+- `*384*11100#`
+- `*384*99900#`
+
+# Create Screen Content
 - Modify [screens.yml file in this repo](https://github.com/fnokeke/BFS/blob/master/UssdApp/static/screens.yml)
 - [Check here](https://django-ussd-airflow.readthedocs.io/en/latest/tutorial.html) for more information on creating ussd screens
+
+# Capture Error in User Input
+To capture error in a given screen:
+- `validators` block is required in your screens.yml
+- Update `LIST_OF_ERROR_PHRASES` in `error_terms.py` to include matching phrases (**case_sensitive**).
+This phrase is used as a workaround to discover errors in ussd_airflow library.
+- Example:
+    ```
+    <!--screens.yml -->
+    ...
+    step3_enter_age:
+    type: input_screen
+    text: "(3/4) Your age\n"
+    input_identifier: age
+    next_screen: step4_enter_nps
+    validators:
+        - regex: ^(1[89]|[2-9][0-9])$
+          text:
+            en: |
+              Re-enter age (between 18 and 99) # Re-enter is our trigger phrase
+            sw: |
+              Re-enter age (kutoka 18 hadi 99)
+    ...
+
+    <!--error_terms.py -->
+    LIST_OF_ERROR_PHRASES = [
+        "Re-enter"          # Re-enter matches with trigger phrase (case sensitive)
+    ]
+
+    ```
 
 # Database
 - Install Postgres on your machine, login and create a database for your project:
