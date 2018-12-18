@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-# from django.shortcuts import render
 from django.http import HttpResponse
 from ussd.core import UssdView, UssdRequest
 from UssdApp.models import UssdUser
+from UssdApp import error_terms
 
 
 class CustomUssdView(UssdView):
@@ -28,14 +28,6 @@ class CustomUssdView(UssdView):
             use_built_in_session_management=req.data.get(
                 'use_built_in_session_management', False)
         )
-        UssdUser.add({
-            'phone_number': req.data['phoneNumber'].strip('+'),
-            'session_id': session_id,
-            'ussd_input': req.data['text'],
-            'service_code': req.data['serviceCode'],
-            'language': req.data.get('language', 'en')
-        })
-
         return ussd_request
 
     @staticmethod
@@ -55,6 +47,8 @@ class CustomUssdView(UssdView):
         return screen
 
     def ussd_response_handler(self, ussd_response):
+        self.log_response(ussd_response)
+
         if ussd_response.status:
             res = 'CON' + ' ' + str(ussd_response)
             response = HttpResponse(res)
@@ -63,9 +57,53 @@ class CustomUssdView(UssdView):
             response = HttpResponse(res)
         return response
 
+    def log_response(self, ussd_response):
+        sess = ussd_response.session._session
+        interaction = sess['ussd_interaction']
+        screen_answered, has_error, seconds_spent = None, False, 0
+
+        if len(interaction) == 1:
+            print('********first ussd call made*****************')
+            screen_answered = 'ussd_initiated'
+
+        elif len(interaction) > 1:
+            screen_answered = interaction[-2]['screen_name']
+            print('**********last_answered_screen******** = ', screen_answered)
+            print('**********last_input_entered******** = ', sess['input'])
+
+            has_error = False
+            for phrase in error_terms.LIST_OF_ERROR_PHRASES:
+                if phrase in interaction[-1]['screen_text']:
+                    has_error = True
+                    break
+
+            if has_error:
+                print("(((((((((((((((Error in user entry!)))))))))))))))))")
+
+            seconds_spent = interaction[-2]['duration'] / 1000
+            print('**********time_spent******** = ', seconds_spent, "seconds")
+
+        # next_screen = interaction[-1]['screen_name']
+        next_screen = sess['_ussd_state']['next_screen']
+        print('---------------------------------------------------------------------------')
+        print('**********next_screen******** = ', next_screen)
+        print('**********next_text******** = \n', interaction[-1]['screen_text'])
+        print()
+        print()
+
+        UssdUser.add({
+            'phone_number': sess['phone_number'],
+            'session_id': sess['session_id'],
+            'service_code': sess['service_code'],
+            'language': sess.get('language', 'en'),
+            'screen_answered': screen_answered,
+            'ussd_input': sess['input'],
+            'has_error': has_error,
+            'seconds_spent': seconds_spent,
+            'next_screen': next_screen
+        })
+
 
 # Project Landing Page
 def index(request):
     return HttpResponse("<b>Welcome to USSD App Page!</b>")
-
-
