@@ -54,7 +54,6 @@ This phrase is used as a workaround to discover errors in ussd_airflow library.
     LIST_OF_ERROR_PHRASES = [
         "Re-enter"          # Re-enter matches with trigger phrase (case sensitive)
     ]
-m
     ```
 
 # Database
