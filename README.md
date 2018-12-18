@@ -54,7 +54,7 @@ This phrase is used as a workaround to discover errors in ussd_airflow library.
     LIST_OF_ERROR_PHRASES = [
         "Re-enter"          # Re-enter matches with trigger phrase (case sensitive)
     ]
-
+m
     ```
 
 # Database
@@ -88,3 +88,9 @@ This phrase is used as a workaround to discover errors in ussd_airflow library.
 - Create Django admin account: `python manage.py createsuperuser` (enter username, email, password)
 - Visit [http://localhost:8000/admin] to login into admin mode
 - You can add models (tables) to `models.py` and then run migration command above to create them in your DB
+
+- If your migrations result in undetected changes or they are not creating tables in your tables. Try:
+   ```
+    python manage.py migrate --fake APPNAME zero
+    python manage.py migrate APPNAME
+   ```

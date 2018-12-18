@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class UssdUser(models.Model):
+class UssdLog(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     phone_number = models.CharField(max_length=15)
     session_id = models.CharField(max_length=50)
@@ -13,9 +13,12 @@ class UssdUser(models.Model):
     seconds_spent = models.IntegerField(default=0)
     next_screen = models.CharField(max_length=30, default='')
 
+    class Meta:
+        db_table = 'ussd_log'
+
     @staticmethod
     def add(data):
-        entry = UssdUser(
+        entry = UssdLog(
             phone_number=data['phone_number'],
             session_id=data['session_id'],
             service_code=data['service_code'],

@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.http import HttpResponse
 from ussd.core import UssdView, UssdRequest
-from UssdApp.models import UssdUser
+from UssdApp.models import UssdLog
 from UssdApp import error_terms
 
 
@@ -91,7 +91,7 @@ class CustomUssdView(UssdView):
         print()
         print()
 
-        UssdUser.add({
+        UssdLog.add({
             'phone_number': sess['phone_number'],
             'session_id': sess['session_id'],
             'service_code': sess['service_code'],
