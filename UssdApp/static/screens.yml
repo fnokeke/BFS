@@ -27,12 +27,26 @@ step3_enter_age:
   text: "(3/4) Your age\n"
   input_identifier: age
   next_screen: step4_enter_nps
+  validators:
+    - regex: ^(1[89]|[2-9][0-9])$
+      text:
+        en: |
+          Re-enter age (between 18 and 99)
+        sw: |
+          Re-enter age (kutoka 18 hadi 99)
 
 step4_enter_nps:
   type: input_screen
   text: "(4/4) Rate Us: On a scale of 0-10 (horrible-amazing), how would you rate us based on the services you received from our CHVs?"
   input_identifier: nps
   next_screen: the_end
+  validators:
+    - regex: ^([0-9]|10)$
+      text:
+        en: |
+          Re-enter rating (between 0 and 10)
+        sw: |
+          Re-enter rating (kutoka 0 hadi 10)
 
 the_end:
   type: quit_screen
