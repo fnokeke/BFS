@@ -37,7 +37,7 @@ step3_enter_age:
 
 step4_enter_nps:
   type: input_screen
-  text: "(4/4) Rate Us: On a scale of 0-10 (horrible-amazing), how would you rate us based on the services you received from our CHVs?"
+  text: "(4/4) On a scale of 0-10, how likely are you to recommend us to someone else? (0=not at all likely and 10=very likely to recommend)"
   input_identifier: nps
   next_screen: the_end
   validators:

@@ -30,7 +30,8 @@ step3_enter_age:
 
 step4_enter_nps:
   type: input_screen
-  text: "(4/4) Rate Hospital: On a scale of 0-10 (horrible-amazing), how would you rate the services you received from the hospital?"
+  text: "(4/4) On a scale of 0-10, how likely are you to recommend this clinic to someone
+  who needs similar services to those you received today? (0=not at all likely and 10=very likely to recommend)"
   input_identifier: nps
   next_screen: the_end
 
