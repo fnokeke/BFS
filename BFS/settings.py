@@ -26,7 +26,7 @@ SECRET_KEY = '#^sk(#d*k%g446(w2*m(_r@uy=qw@#37jm7#it587totn--qt#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['63725bde.ngrok.io', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['63725bde.ngrok.io', 'localhost', '127.0.0.1', 'slm.smalldata.io']
 
 
 # Application definition
