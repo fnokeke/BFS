@@ -8,7 +8,7 @@ class UssdLog(models.Model):
     service_code = models.CharField(max_length=12)
     language = models.CharField(max_length=5)
     screen_answered = models.CharField(max_length=30, default='')
-    ussd_input = models.CharField(max_length=30)
+    ussd_input = models.CharField(max_length=100, default='')
     has_error = models.BooleanField(default=False)
     seconds_spent = models.IntegerField(default=0)
     next_screen = models.CharField(max_length=30, default='')
