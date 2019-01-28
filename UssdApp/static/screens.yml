@@ -56,4 +56,4 @@ step5_any_comment:
 
 the_end:
   type: quit_screen
-  text: Your rating was {{nps}}. Thank you for your response.
+  text: Thank you for your response.
