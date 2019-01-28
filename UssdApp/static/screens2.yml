@@ -5,7 +5,7 @@ initial_screen:
 
 step1_welcome_msg:
   type: input_screen
-  text: "(1/4) Hello Patient, Welcome!\n 1. Submit Feedback\n 2. Exit"
+  text: "(1/4) Welcome to Clinic Feedback!\n 1. Submit Feedback\n 2. Exit"
   input_identifier: welcome
   default_next_screen: step2_enter_gender
   next_screen:
@@ -24,9 +24,16 @@ step2_enter_gender:
 
 step3_enter_age:
   type: input_screen
-  text: "(3/4) Your age\n"
+  text: "(3/4) Your age or estimate\n"
   input_identifier: age
   next_screen: step4_enter_nps
+  validators:
+    - regex: ^(1[89]|[2-9][0-9])$
+      text:
+        en: |
+          Re-enter age (between 18 and 99)
+        sw: |
+          Re-enter age (kutoka 18 hadi 99)
 
 step4_enter_nps:
   type: input_screen
@@ -34,6 +41,13 @@ step4_enter_nps:
   who needs similar services to those you received today? (0=not at all likely and 10=very likely to recommend)"
   input_identifier: nps
   next_screen: the_end
+  validators:
+    - regex: ^([0-9]|10)$
+      text:
+        en: |
+          Re-enter rating (between 0 and 10)
+        sw: |
+          Re-enter rating (kutoka 0 hadi 10)
 
 the_end:
   type: quit_screen
