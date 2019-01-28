@@ -5,7 +5,7 @@ initial_screen:
 
 step1_welcome_msg:
   type: input_screen
-  text: "(1/4) Welcome to Feedback Center!\n 1. Submit Feedback\n 2. Exit"
+  text: "(1/5) Welcome to Feedback Center!\n 1. Submit Feedback\n 2. Exit"
   input_identifier: welcome
   default_next_screen: step2_enter_gender
   next_screen:
@@ -18,13 +18,13 @@ quick_end:
 
 step2_enter_gender:
   type: input_screen
-  text: "(2/4) Your gender\n 1. Female\n 2. Male"
+  text: "(2/5) Your gender\n 1. Female\n 2. Male"
   input_identifier: gender
   next_screen: step3_enter_age
 
 step3_enter_age:
   type: input_screen
-  text: "(3/4) Your age or estimate\n"
+  text: "(3/5) Your age or estimate\n"
   input_identifier: age
   next_screen: step4_enter_nps
   validators:
@@ -37,11 +37,9 @@ step3_enter_age:
 
 step4_enter_nps:
   type: input_screen
-  text: "(4/4) On a scale of 0-10, how likely are you to recommend us to someone else? (0=not at all likely and 10=very likely to recommend)"
-#  text: "(4/4) On a scale of 0-10, how likely are you to recommend this clinic to someone
-#  who needs similar services to those you received today? (0=not at all likely and 10=very likely to recommend)"
+  text: "(4/5) On a scale of 0-10, how likely are you to recommend us to someone else? (0=not at all likely and 10=very likely to recommend)"
   input_identifier: nps
-  next_screen: the_end
+  next_screen: step5_any_comment
   validators:
     - regex: ^([0-9]|10)$
       text:
@@ -49,6 +47,12 @@ step4_enter_nps:
           Re-enter rating (between 0 and 10)
         sw: |
           Re-enter rating (kutoka 0 hadi 10)
+
+step5_any_comment:
+  type: input_screen
+  text: "(5/5) Any other comment?"
+  input_identifier: comment
+  next_screen: the_end
 
 the_end:
   type: quit_screen

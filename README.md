@@ -15,13 +15,13 @@ International Conference on Information and Communication Technologies and Devel
 # Test in Simulator
 - Launch Africa's Talking Simulator [example](https://simulator.africastalking.com:1517/simulator/ussd)
 - Enter Country / Phone (e.g. Kenya / +254-7-123-456-789)
-- Enter ussd code `*384*11100#` and then call button
+- Enter ussd code `*384*777#` and then call button
 - USSD screen sessions will appear
 - Congrats!
 
 # Active USSD Codes
-- `*384*11100#`
-- `*384*99900#`
+- `*384*777#`
+- `*384*888#`
 
 # Create Screen Content
 - Modify [screens.yml file in this repo](https://github.com/fnokeke/BFS/blob/master/UssdApp/static/screens.yml)

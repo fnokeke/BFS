@@ -34,7 +34,7 @@ class CustomUssdView(UssdView):
     def get_customer_journey_namespace(req):
         screen_namespace = "BFS_namespace"
         service_code = dict(req.data)['serviceCode'][0]
-        if service_code == '*384*99900#':
+        if service_code == '*384*888#':
             screen_namespace = "BFS_namespace2"
         return screen_namespace
 
@@ -42,7 +42,7 @@ class CustomUssdView(UssdView):
     def get_customer_journey_conf(req):
         screen = "./UssdApp/static/screens.yml"
         service_code = dict(req.data)['serviceCode'][0]
-        if service_code == '*384*99900#':
+        if service_code == '*384*888#':
             screen = "./UssdApp/static/screens2.yml"
         return screen
 
