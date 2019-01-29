@@ -39,7 +39,7 @@ step4_enter_nps:
   type: input_screen
   text: "(4/5) On a scale of 0-10, how likely are you to recommend us to someone else? (0=not at all likely and 10=very likely to recommend)"
   input_identifier: nps
-  next_screen: step5_any_comment
+  next_screen: step5_comment
   validators:
     - regex: ^([0-9]|10)$
       text:
@@ -48,9 +48,9 @@ step4_enter_nps:
         sw: |
           Re-enter rating (kutoka 0 hadi 10)
 
-step5_any_comment:
+step5_comment:
   type: input_screen
-  text: "(5/5) Any other comment?"
+  text: "(5/5) What is the reason for your score?"
   input_identifier: comment
   next_screen: the_end
 
