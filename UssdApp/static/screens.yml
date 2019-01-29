@@ -37,7 +37,8 @@ step3_enter_age:
 
 step4_enter_nps:
   type: input_screen
-  text: "(4/5) On a scale of 0-10, how likely are you to recommend us to someone else? (0=not at all likely and 10=very likely to recommend)"
+  text: "(4/5) How likely are you to recommend the CHV who visited you to someone else?
+  (Choose from 0 to 10, 0=not likely and 10=very likely)"
   input_identifier: nps
   next_screen: step5_comment
   validators:
