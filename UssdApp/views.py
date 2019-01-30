@@ -104,6 +104,19 @@ class CustomUssdView(UssdView):
         })
 
 
+# class QualityCheck:
+#     @staticmethod
+#     def check_broken_link(requests, data):
+#         try:
+#             url = requests.head(data)
+#             if url.status_code == 200 or url.status_code == 302 or url.status_code == 301:
+#                 return True
+#         except requests.exceptions.SSLError as e:
+#             print("(((((((((((((((SSL Error)))))))))))))))))")
+#             print(e)
+#             return False
+
+
 # Project Landing Page
 def index(request):
     return HttpResponse("<b>Welcome to USSD App Page!</b>")
