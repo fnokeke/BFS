@@ -5,7 +5,7 @@ initial_screen:
 
 step1_welcome_msg:
   type: input_screen
-  text: "(1/5) Welcome to Medic Mobile clinic feedback!\n 1. Submit Feedback\n 2. Exit"
+  text: "(1/5) Welcome! This service is free. Hospital staff will not see your response. \n 1. Continue \n 2. Exit"
   input_identifier: welcome
   default_next_screen: step2_enter_gender
   next_screen:
