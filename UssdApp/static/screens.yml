@@ -5,7 +5,8 @@ initial_screen:
 
 step1_welcome_msg:
   type: input_screen
-  text: "(1/5) Welcome! This service is free. Hospital staff will not see your response. \n 1. Continue \n 2. Exit"
+  text: "Welcome! This service is free. Hospital staff will not see your response.
+  Please answer all 4 questions.\n 1. Continue \n 2. Exit"
   input_identifier: welcome
   default_next_screen: step2_enter_gender
   next_screen:
@@ -18,13 +19,13 @@ quick_end:
 
 step2_enter_gender:
   type: input_screen
-  text: "(2/5) Your gender\n 1. Female\n 2. Male"
+  text: "Q1. Your gender\n 1. Female\n 2. Male"
   input_identifier: gender
   next_screen: step3_enter_age
 
 step3_enter_age:
   type: input_screen
-  text: "(3/5) Your age or estimate\n"
+  text: "Q2. Your age or approximate number\n"
   input_identifier: age
   next_screen: step4_enter_nps
   validators:
@@ -37,8 +38,8 @@ step3_enter_age:
 
 step4_enter_nps:
   type: input_screen
-  text: "(4/5) How likely are you to recommend this clinic to someone who needs similar services?
-  (Choose from 0 to 10, 0=not likely and 10=very likely)"
+  text: "Q3. How likely are you to recommend this clinic to someone else?
+  (Choose a score from 0 to 10. Think of your score as a mark out of 10)"
   input_identifier: nps
   next_screen: step5_comment
   validators:
@@ -51,10 +52,11 @@ step4_enter_nps:
 
 step5_comment:
   type: input_screen
-  text: "(5/5) What is the reason for your score?"
+  text: "Q4. What is the reason for your score of {{nps}} out of 10?
+  (To skip this question, type 0)"
   input_identifier: comment
   next_screen: the_end
 
 the_end:
   type: quit_screen
-  text: Thank you for your response.
+  text: Thank you for your response. We appreciate it.
