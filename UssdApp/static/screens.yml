@@ -12,6 +12,10 @@ step1_welcome_msg:
   next_screen:
     - condition: input|int == 2
       next_screen: quick_end
+  validators:
+    - regex: ^([1-2])$
+      text:
+        Re-enter number (1 or 2). 1 = Continue. 2 = Exit.
 
 quick_end:
   type: quit_screen
@@ -22,6 +26,10 @@ step2_enter_gender:
   text: "Q1. Your gender\n 1. Female\n 2. Male"
   input_identifier: gender
   next_screen: step3_enter_age
+  validators:
+    - regex: ^([1-2])$
+      text:
+        Re-enter number (1 or 2). 1 = Female. 2 = Male.
 
 step3_enter_age:
   type: input_screen
@@ -31,32 +39,28 @@ step3_enter_age:
   validators:
     - regex: ^(1[89]|[2-9][0-9])$
       text:
-        en: |
-          Re-enter age (between 18 and 99)
-        sw: |
-          Re-enter age (kutoka 18 hadi 99)
+        Re-enter a number for your age (between 18 and 99)
 
 step4_enter_nps:
   type: input_screen
-  text: "Q3. How likely are you to recommend this clinic to someone else?
-  (Choose a score from 0 to 10. Think of your score as a mark out of 10)"
+  text: "Q3. Based on your recent visit, how likely are you to recommend the hospital to someone else?\n
+  1. Definitely yes\n
+  2. Maybe\n
+  3. Definitely no"
   input_identifier: nps
   next_screen: step5_comment
   validators:
-    - regex: ^([0-9]|10)$
+    - regex: ^([1-3])$
       text:
-        en: |
-          Re-enter rating (between 0 and 10)
-        sw: |
-          Re-enter rating (kutoka 0 hadi 10)
+        Re-enter number (1, 2 or 3). 1 = Definitely yes. 2 = Maybe. 3 = Definitely no.
 
 step5_comment:
   type: input_screen
-  text: "Q4. What is the reason for your score of {{nps}} out of 10?
+  text: "Q4. What is the reason for selecting {{nps}}?
   (To skip this question, type 0)"
   input_identifier: comment
   next_screen: the_end
 
 the_end:
   type: quit_screen
-  text: Thank you for your response. We appreciate it.
+  text: Thank you for your response.
