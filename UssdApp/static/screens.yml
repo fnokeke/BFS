@@ -63,4 +63,4 @@ step5_comment:
 
 the_end:
   type: quit_screen
-  text: Thank you for your response.
+  text: Thank you. We appreciate your response.
