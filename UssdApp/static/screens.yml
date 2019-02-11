@@ -56,8 +56,12 @@ step4_enter_nps:
 
 step5_comment:
   type: input_screen
-  text: "Q4. What is the reason for selecting {{nps}}?
-  (To skip this question, type 0)"
+  text: "Q4: Type all the numbers that apply:\n
+  1. Happy with the service\n
+  2. Cost is too high\n
+  3. Test was not done\n
+  4. Waited for too long\n
+  5. Other reason"
   input_identifier: comment
   next_screen: the_end
 

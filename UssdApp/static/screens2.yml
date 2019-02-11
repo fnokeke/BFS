@@ -56,8 +56,11 @@ step4_enter_nps:
 
 step5_comment:
   type: input_screen
-  text: "Q4. What is the reason for selecting {{nps}}?
-  (To skip this question, type 0)"
+  text: "Q4: Type all the numbers that apply:\n
+  1. Happy with the home visit\n
+  2. CHV did not respect me\n
+  3. CHV did not answer all my questions\n
+  4. Other reason"
   input_identifier: comment
   next_screen: the_end
 
