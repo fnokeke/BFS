@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.contrib import admin
 
-from UssdApp.views import index, CustomUssdView
+from UssdApp.views import CustomUssdView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
