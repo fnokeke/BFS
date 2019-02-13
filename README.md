@@ -26,6 +26,8 @@ International Conference on Information and Communication Technologies and Devel
 # Create Screen Content
 - Modify [screens.yml file in this repo](https://github.com/fnokeke/BFS/blob/master/UssdApp/static/screens.yml)
 - [Check here](https://django-ussd-airflow.readthedocs.io/en/latest/tutorial.html) for more information on creating ussd screens
+- Screen content should be a maximum of **172 characters** for Kenya Safaricom network. Anything longer is automatically split by the network
+and requires users to enter the number `98` to see the content that was split. Split contents are not encouraged as they could create a confusing user experience.
 
 # Capture Error in User Input
 To capture error in a given screen:
