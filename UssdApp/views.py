@@ -36,6 +36,8 @@ class CustomUssdView(UssdView):
         service_code = dict(req.data)['serviceCode'][0]
         if service_code == '*384*888#':
             screen_namespace = "BFS_namespace2"
+        elif service_code == '*384*11100#':
+            screen_namespace = "BFS_testing"
         return screen_namespace
 
     @staticmethod
@@ -44,6 +46,8 @@ class CustomUssdView(UssdView):
         service_code = dict(req.data)['serviceCode'][0]
         if service_code == '*384*888#':
             screen = "./UssdApp/static/screens2.yml"
+        elif service_code == '*384*11100#':
+            screen = "./UssdApp/static/testing.yml"
         return screen
 
     def ussd_response_handler(self, ussd_response):
