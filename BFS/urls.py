@@ -9,5 +9,3 @@ urlpatterns = [
     url(r'^$', CustomUssdView.as_view(), name='index_africastalking'),
     url(r'^africastalking_gateway', CustomUssdView.as_view(), name='africastalking_url'),
 ]
-
-

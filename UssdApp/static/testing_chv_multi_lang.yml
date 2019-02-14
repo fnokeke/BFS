@@ -1,0 +1,238 @@
+initial_screen:
+  type: initial_screen
+  next_screen: step1_choose_lang
+  default_language: en
+
+step1_choose_lang:
+  type: input_screen
+  text: "Your language \n 1. English \n 2. Kiswahili \n 3. Dholuo"
+  input_identifier: lang
+  next_screen:
+    - condition: input|int == 1
+      next_screen: eng_step1_welcome_msg
+    - condition: input|int == 2
+      next_screen: swa_step1_welcome_msg
+    - condition: input|int == 3
+      next_screen: dho_step1_welcome_msg
+  validators:
+    - regex: ^([1-3])$
+      text:
+        re-enter number (1, 2 or 3). 1 = English. 2 = Kiswahili. 3. Dholuo.
+
+
+########################
+########################
+# ENGLISH VERSION
+########################
+########################
+
+eng_step1_welcome_msg:
+  type: input_screen
+  text: "Welcome! This service is free. CHVs will not see your response.
+  Please answer all 4 questions.\n 1. Continue \n 2. Exit"
+  input_identifier: welcome
+  default_next_screen: eng_step2_enter_gender
+  next_screen:
+    - condition: input|int == 2
+      next_screen: eng_quick_end
+  validators:
+    - regex: ^([1-2])$
+      text:
+        Re-enter number (1 or 2). 1 = Continue. 2 = Exit.
+
+eng_quick_end:
+  type: quit_screen
+  text: You exited the Feedback Center.
+
+eng_step2_enter_gender:
+  type: input_screen
+  text: "Q1. Your gender\n 1. Female\n 2. Male"
+  input_identifier: gender
+  next_screen: eng_step3_enter_age
+  validators:
+    - regex: ^([1-2])$
+      text:
+        Re-enter number (1 or 2). 1 = Female. 2 = Male.
+
+eng_step3_enter_age:
+  type: input_screen
+  text: "Q2. Your age or approximate number\n"
+  input_identifier: age
+  next_screen: eng_step4_enter_nps
+  validators:
+    - regex: ^(1[89]|[2-9][0-9])$
+      text:
+        Re-enter a number for your age (between 18 and 99)
+
+eng_step4_enter_nps:
+  type: input_screen
+  text: "Q3. How likely are you to recommend the CHV who visited you to someone else?\n
+  1. Definitely yes\n
+  2. Maybe\n
+  3. Definitely no"
+  input_identifier: nps
+  next_screen: eng_step5_reason
+  validators:
+    - regex: ^([1-3])$
+      text:
+        Re-enter number (1, 2 or 3). 1 = Definitely yes. 2 = Maybe. 3 = Definitely no.
+
+eng_step5_reason:
+  type: input_screen
+  text: "Q4: Type all the numbers that apply:\n
+  1. Happy with the home visit\n
+  2. CHV did not respect me\n
+  3. CHV did not answer all my questions\n
+  4. Other reason"
+  input_identifier: reason
+  next_screen: eng_the_end
+
+eng_the_end:
+  type: quit_screen
+  text: Thank you. We appreciate your response.
+
+
+########################
+########################
+# KISWAHILI VERSION
+########################
+########################
+
+
+swa_step1_welcome_msg:
+  type: input_screen
+  text: "SWA - Welcome! This service is free. CHVs will not see your response.
+  Please answer all 4 questions.\n 1. Continue \n 2. Exit"
+  input_identifier: welcome
+  default_next_screen: swa_step2_enter_gender
+  next_screen:
+    - condition: input|int == 2
+      next_screen: swa_quick_end
+  validators:
+    - regex: ^([1-2])$
+      text:
+        SWA - Re-enter number (1 or 2). 1 = Continue. 2 = Exit.
+
+swa_quick_end:
+  type: quit_screen
+  text: SWA - You exited the Feedback Center.
+
+swa_step2_enter_gender:
+  type: input_screen
+  text: "Q1. SWA - Your gender\n 1. Female\n 2. Male"
+  input_identifier: gender
+  next_screen: swa_step3_enter_age
+  validators:
+    - regex: ^([1-2])$
+      text:
+        SWA - Re-enter number (1 or 2). 1 = Female. 2 = Male.
+
+swa_step3_enter_age:
+  type: input_screen
+  text: "Q2. SWA - Your age or approximate number\n"
+  input_identifier: age
+  next_screen: swa_step4_enter_nps
+  validators:
+    - regex: ^(1[89]|[2-9][0-9])$
+      text:
+        SWA - Re-enter a number for your age (between 18 and 99)
+
+swa_step4_enter_nps:
+  type: input_screen
+  text: "Q3. SWA - How likely are you to recommend the CHV who visited you to someone else?\n
+  1. Definitely yes\n
+  2. Maybe\n
+  3. Definitely no"
+  input_identifier: nps
+  next_screen: swa_step5_reason
+  validators:
+    - regex: ^([1-3])$
+      text:
+        SWA - Re-enter number (1, 2 or 3). 1 = Definitely yes. 2 = Maybe. 3 = Definitely no.
+
+swa_step5_reason:
+  type: input_screen
+  text: "Q4: SWA - Type all the numbers that apply:\n
+  1. Happy with the home visit\n
+  2. CHV did not respect me\n
+  3. CHV did not answer all my questions\n
+  4. Other reason"
+  input_identifier: reason
+  next_screen: swa_the_end
+
+swa_the_end:
+  type: quit_screen
+  text: SWA - Thank you. We appreciate your response.
+
+
+########################
+########################
+# DHOLUO VERSION
+########################
+########################
+
+
+dho_step1_welcome_msg:
+  type: input_screen
+  text: "DHO - Welcome! This service is free. CHVs will not see your response.
+  Please answer all 4 questions.\n 1. Continue \n 2. Exit"
+  input_identifier: welcome
+  default_next_screen: dho_step2_enter_gender
+  next_screen:
+    - condition: input|int == 2
+      next_screen: dho_quick_end
+  validators:
+    - regex: ^([1-2])$
+      text:
+        DHO - Re-enter number (1 or 2). 1 = Continue. 2 = Exit.
+
+dho_quick_end:
+  type: quit_screen
+  text: DHO - You exited the Feedback Center.
+
+dho_step2_enter_gender:
+  type: input_screen
+  text: "Q1. DHO - Your gender\n 1. Female\n 2. Male"
+  input_identifier: gender
+  next_screen: dho_step3_enter_age
+  validators:
+    - regex: ^([1-2])$
+      text:
+        DHO - Re-enter number (1 or 2). 1 = Female. 2 = Male.
+
+dho_step3_enter_age:
+  type: input_screen
+  text: "Q2. DHO - Your age or approximate number\n"
+  input_identifier: age
+  next_screen: dho_step4_enter_nps
+  validators:
+    - regex: ^(1[89]|[2-9][0-9])$
+      text:
+        DHO - Re-enter a number for your age (between 18 and 99)
+
+dho_step4_enter_nps:
+  type: input_screen
+  text: "Q3. DHO - How likely are you to recommend the CHV who visited you to someone else?\n
+  1. Definitely yes\n
+  2. Maybe\n
+  3. Definitely no"
+  input_identifier: nps
+  next_screen: dho_step5_reason
+  validators:
+    - regex: ^([1-3])$
+      text:
+        DHO - Re-enter number (1, 2 or 3). 1 = Definitely yes. 2 = Maybe. 3 = Definitely no.
+
+dho_step5_reason:
+  type: input_screen
+  text: "Q4: DHO - Type all the numbers that apply:\n
+  1. Happy with the home visit\n
+  2. CHV did not respect me\n
+  3. CHV did not answer all my questions\n
+  4. Other reason"
+  input_identifier: reason
+  next_screen: dho_the_end
+
+dho_the_end:
+  type: quit_screen
+  text: DHO - Thank you. We appreciate your response.
