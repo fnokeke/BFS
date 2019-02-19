@@ -42,12 +42,12 @@ class CustomUssdView(UssdView):
 
     @staticmethod
     def get_customer_journey_conf(req):
-        screen = "./UssdApp/static/hospital.yml"
+        screen = "./UssdApp/static/hospital_multi_lang.yml"
         service_code = dict(req.data)['serviceCode'][0]
         if service_code == '*384*888#':
-            screen = "./UssdApp/static/chv.yml"
+            screen = "./UssdApp/static/chv_multi_lang.yml"
         elif service_code == '*384*11100#':
-            screen = "./UssdApp/static/testing_chv_multi_lang.yml"
+            screen = "./UssdApp/static/hospital_multi_lang.yml"
         return screen
 
     def ussd_response_handler(self, ussd_response):

@@ -5,7 +5,7 @@ initial_screen:
 
 step1_choose_lang:
   type: input_screen
-  text: "Your language \n 1. English \n 2. Kiswahili \n 3. Dholuo"
+  text: "Choose language / Chagua Lugha / Yier dhok miwacho\n 1. English \n 2. Kiswahili \n 3. Dholuo"
   input_identifier: lang
   next_screen:
     - condition: input|int == 1
@@ -67,22 +67,22 @@ eng_step3_enter_age:
 eng_step4_enter_nps:
   type: input_screen
   text: "Q3. How likely are you to recommend the CHV who visited you to someone else?\n
-  1. Definitely yes\n
+  1. Definitely no\n
   2. Maybe\n
-  3. Definitely no"
+  3. Definitely yes"
   input_identifier: nps
   next_screen: eng_step5_reason
   validators:
     - regex: ^([1-3])$
       text:
-        Re-enter number (1, 2 or 3). 1 = Definitely yes. 2 = Maybe. 3 = Definitely no.
+        Re-enter number (1, 2 or 3). 1 = Definitely no. 2 = Maybe. 3 = Definitely yes.
 
 eng_step5_reason:
   type: input_screen
-  text: "Q4: Type all the numbers that apply:\n
-  1. Happy with the home visit\n
+  text: "Q4. Type all the numbers that apply:\n
+  1. CHV did not answer all my questions\n
   2. CHV did not respect me\n
-  3. CHV did not answer all my questions\n
+  3. Happy with the home visit\n
   4. Other reason"
   input_identifier: reason
   next_screen: eng_the_end
@@ -101,8 +101,10 @@ eng_the_end:
 
 swa_step1_welcome_msg:
   type: input_screen
-  text: "SWA - Welcome! This service is free. CHVs will not see your response.
-  Please answer all 4 questions.\n 1. Continue \n 2. Exit"
+#  text: "SWA - Welcome! This service is free. CHVs will not see your response.
+#  Please answer all 4 questions.\n 1. Continue \n 2. Exit"
+  text: "Karibu! Huduma hii ni bure. Mfanyikazi wa afya wa kujitolea hawataona jibu lako.
+  Tafadhali jibu maswali yote 4.\n 1. Endelea \n 2. Kutoka"
   input_identifier: welcome
   default_next_screen: swa_step2_enter_gender
   next_screen:
@@ -111,58 +113,75 @@ swa_step1_welcome_msg:
   validators:
     - regex: ^([1-2])$
       text:
-        SWA - Re-enter number (1 or 2). 1 = Continue. 2 = Exit.
+#        SWA - Re-enter number (1 or 2). 1 = Continue. 2 = Exit.
+        Rejesha mambari (1 au 2). 1 = Endelea.  2 = Kutoka.
 
 swa_quick_end:
   type: quit_screen
-  text: SWA - You exited the Feedback Center.
+#  text: SWA - You exited the Feedback Center.
+  text: Umetoka kwenye kituo cha maoni.
 
 swa_step2_enter_gender:
   type: input_screen
-  text: "Q1. SWA - Your gender\n 1. Female\n 2. Male"
+#  text: "Q1. SWA - Your gender\n 1. Female\n 2. Male"
+  text: "Q1. Jinsia yako\n 1. Kike\n 2. Kiume"
   input_identifier: gender
   next_screen: swa_step3_enter_age
   validators:
     - regex: ^([1-2])$
       text:
-        SWA - Re-enter number (1 or 2). 1 = Female. 2 = Male.
+#        SWA - Re-enter number (1 or 2). 1 = Female. 2 = Male.
+        Rejesha nambari (1 au 2). 1 = Kike.  2 = Kiume.
 
 swa_step3_enter_age:
   type: input_screen
-  text: "Q2. SWA - Your age or approximate number\n"
+#  text: "Q2. SWA - Your age or approximate number\n"
+  text: "Q2. Umri wako au kadiria\n"
   input_identifier: age
   next_screen: swa_step4_enter_nps
   validators:
     - regex: ^(1[89]|[2-9][0-9])$
       text:
-        SWA - Re-enter a number for your age (between 18 and 99)
+#        SWA - Re-enter a number for your age (between 18 and 99)
+        Rejesha nambari ya umri yako (kati ya 18 na 99)
 
 swa_step4_enter_nps:
   type: input_screen
-  text: "Q3. SWA - How likely are you to recommend the CHV who visited you to someone else?\n
-  1. Definitely yes\n
-  2. Maybe\n
-  3. Definitely no"
+#  text: "Q3. SWA - How likely are you to recommend the CHV who visited you to someone else?\n
+#  1. Definitely no\n
+#  2. Maybe\n
+#  3. Definitely yes"
+  text: "Q3.Kuna uwezekano wa kupendekeza mfanyikazi wa afya wa kujitolea aliyekutembelea kwa mtu mwengine?\n
+  1. Hapana bila shaka\n
+  2. Labda\n
+  1. Ndio bila shaka\n"
   input_identifier: nps
   next_screen: swa_step5_reason
   validators:
     - regex: ^([1-3])$
       text:
-        SWA - Re-enter number (1, 2 or 3). 1 = Definitely yes. 2 = Maybe. 3 = Definitely no.
+#        SWA - Re-enter number (1, 2 or 3). 1 = Definitely no. 2 = Maybe. 3 = Definitely yes.
+        Rejesha nambari (1, 2 au 3). 1 = Hapana bila shaka. 2 = Labda. 3 = Ndio bila shaka.
 
 swa_step5_reason:
   type: input_screen
-  text: "Q4: SWA - Type all the numbers that apply:\n
-  1. Happy with the home visit\n
-  2. CHV did not respect me\n
-  3. CHV did not answer all my questions\n
-  4. Other reason"
+#  text: "Q4. SWA - Type all the numbers that apply:\n
+#  1. CHV did not answer all my questions\n
+#  2. CHV did not respect me\n
+#  3. Happy with the home visit\n
+#  4. Other reason"
+  text: "Q4. Weka nambari yote inayofaa:\n
+  1. Mfanyikazi wa afya wa kujitolea hakujibu maswali yangu yote\n
+  2. Mfanyikazi wa afya wa kujitolea hakuniheshimu\n
+  3. Nilifurahia ziara ya nyumbani\n
+  4. Sababu nyingine"
   input_identifier: reason
   next_screen: swa_the_end
 
 swa_the_end:
   type: quit_screen
-  text: SWA - Thank you. We appreciate your response.
+#  text: SWA - Thank you. We appreciate your response.
+  text: Asante. Tunathamini majibu yako.
 
 
 ########################
@@ -174,8 +193,10 @@ swa_the_end:
 
 dho_step1_welcome_msg:
   type: input_screen
-  text: "DHO - Welcome! This service is free. CHVs will not see your response.
-  Please answer all 4 questions.\n 1. Continue \n 2. Exit"
+#  text: "DHO - Welcome! This service is free. CHVs will not see your response.
+#  Please answer all 4 questions.\n 1. Continue \n 2. Exit"
+  text: "Machiegni! Konyni en nono. Nyamrerwa ok bi neno dwoko mari.
+  Yie idwok penjo 4 gi Te.\n 1. Dhi nyime \n 2. Wuogi"
   input_identifier: welcome
   default_next_screen: dho_step2_enter_gender
   next_screen:
@@ -184,55 +205,72 @@ dho_step1_welcome_msg:
   validators:
     - regex: ^([1-2])$
       text:
-        DHO - Re-enter number (1 or 2). 1 = Continue. 2 = Exit.
+#        DHO - Re-enter number (1 or 2). 1 = Continue. 2 = Exit.
+        Rwak namba (1 kata 2). 1 = Dhi nyime.  2 = Wuogi.
 
 dho_quick_end:
   type: quit_screen
-  text: DHO - You exited the Feedback Center.
+#  text: DHO - You exited the Feedback Center.
+  text: Ne iwuok e kiru mar dwoko.
 
 dho_step2_enter_gender:
   type: input_screen
-  text: "Q1. DHO - Your gender\n 1. Female\n 2. Male"
+#  text: "Q1. DHO - Your gender\n 1. Female\n 2. Male"
+  text: "Q1. Chuech\n 1. Nyako\n 2. Wuoi"
   input_identifier: gender
   next_screen: dho_step3_enter_age
   validators:
     - regex: ^([1-2])$
       text:
-        DHO - Re-enter number (1 or 2). 1 = Female. 2 = Male.
+#        DHO - Re-enter number (1 or 2). 1 = Female. 2 = Male.
+        Rwak namba kendo (1 kata 2). 1 = Nyako.  2 = Wuoi.
 
 dho_step3_enter_age:
   type: input_screen
-  text: "Q2. DHO - Your age or approximate number\n"
+#  text: "Q2. DHO - Your age or approximate number\n"
+  text: "Q2. Hiki kata hiki dirom nade\n"
   input_identifier: age
   next_screen: dho_step4_enter_nps
   validators:
     - regex: ^(1[89]|[2-9][0-9])$
       text:
-        DHO - Re-enter a number for your age (between 18 and 99)
+#        DHO - Re-enter a number for your age (between 18 and 99)
+        Rwak higa kendo (ekind 18 kod 99)
 
 dho_step4_enter_nps:
   type: input_screen
-  text: "Q3. DHO - How likely are you to recommend the CHV who visited you to someone else?\n
-  1. Definitely yes\n
-  2. Maybe\n
-  3. Definitely no"
+#  text: "Q3. DHO - How likely are you to recommend the CHV who visited you to someone else?\n
+#  1. Definitely no\n
+#  2. Maybe\n
+#  3. Definitely yes"
+  text: "Q3. Be nitie nyalruok mar pwodho nyamrerwa manolimi ne ngat machielo?\n
+  1. Ok anyal pwodho\n
+  2. Samoro\n
+  3. Anyalo pwodho\n"
   input_identifier: nps
   next_screen: dho_step5_reason
   validators:
     - regex: ^([1-3])$
       text:
-        DHO - Re-enter number (1, 2 or 3). 1 = Definitely yes. 2 = Maybe. 3 = Definitely no.
+#        DHO - Re-enter number (1, 2 or 3). 1 = Definitely no. 2 = Maybe. 3 = Definitely no.
+        Rwak namba kendo (1, 2 kata 3). 1 = Ok anyal pwodho. 2 = Samoro. 3 = Anyalo pwodho.
 
 dho_step5_reason:
   type: input_screen
-  text: "Q4: DHO - Type all the numbers that apply:\n
-  1. Happy with the home visit\n
-  2. CHV did not respect me\n
-  3. CHV did not answer all my questions\n
-  4. Other reason"
+#  text: "Q4. DHO - Type all the numbers that apply:\n
+#  1. CHV did not answer all my questions\n
+#  2. CHV did not respect me\n
+#  3. Happy with the home visit\n
+#  4. Other reason"
+  text: "Q4. Ket nembni tee mowinjore:\n
+  1. Nyamrerwa ok ne odwoko penjo ga duto\n
+  2. Nyamrerwa ok ne ochiwo na lwor\n
+  3. Amor kod limbe mag dala\n
+  4. Wach moro amora mopogore"
   input_identifier: reason
   next_screen: dho_the_end
 
 dho_the_end:
   type: quit_screen
-  text: DHO - Thank you. We appreciate your response.
+#  text: DHO - Thank you. We appreciate your response.
+  text: Erokamano. Wamor kuom dwoko ma imiyo wa.
