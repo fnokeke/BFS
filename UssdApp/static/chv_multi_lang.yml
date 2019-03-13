@@ -151,10 +151,10 @@ swa_step4_enter_nps:
 #  1. Definitely no\n
 #  2. Maybe\n
 #  3. Definitely yes"
-  text: "Q3.Kuna uwezekano wa kupendekeza mfanyikazi wa afya wa kujitolea aliyekutembelea kwa mtu mwengine?\n
+  text: "Q3. Kuna uwezekano wa kupendekeza mfanyikazi wa afya wa kujitolea aliyekutembelea kwa mtu mwengine?\n
   1. Hapana bila shaka\n
   2. Labda\n
-  1. Ndio bila shaka\n"
+  3. Ndio bila shaka\n"
   input_identifier: nps
   next_screen: swa_step5_reason
   validators:
@@ -170,9 +170,14 @@ swa_step5_reason:
 #  2. CHV did not respect me\n
 #  3. Happy with the home visit\n
 #  4. Other reason"
+#  text: "Q4. Weka nambari yote inayofaa:\n
+#  1. Mfanyikazi wa afya wa kujitolea hakujibu maswali yangu yote\n
+#  2. Mfanyikazi wa afya wa kujitolea hakuniheshimu\n
+#  3. Nilifurahia ziara ya nyumbani\n
+#  4. Sababu nyingine"
   text: "Q4. Weka nambari yote inayofaa:\n
-  1. Mfanyikazi wa afya wa kujitolea hakujibu maswali yangu yote\n
-  2. Mfanyikazi wa afya wa kujitolea hakuniheshimu\n
+  1. CHV hakujibu maswali yangu yote\n
+  2. CHV hakuniheshimu\n
   3. Nilifurahia ziara ya nyumbani\n
   4. Sababu nyingine"
   input_identifier: reason
@@ -266,7 +271,7 @@ dho_step5_reason:
   1. Nyamrerwa ok ne odwoko penjo ga duto\n
   2. Nyamrerwa ok ne ochiwo na lwor\n
   3. Amor kod limbe mag dala\n
-  4. Wach moro amora mopogore"
+  4. Wach moro"
   input_identifier: reason
   next_screen: dho_the_end
 
